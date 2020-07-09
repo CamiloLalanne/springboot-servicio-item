@@ -29,11 +29,9 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.formacionbdi.springboot.app.item.models.Item;
 import com.formacionbdi.springboot.app.item.models.Producto;
 import com.formacionbdi.springboot.app.item.models.service.ItemService;
-import com.netflix.discovery.shared.Application;
 import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 
 @RefreshScope
@@ -75,6 +73,12 @@ public class ItemController {
   
 		return response.getBody();
 	}
+	
+	@GetMapping(value = {"/dummy"})
+	public String dummy() {
+		return "dummy service";
+	}
+	
 	
 	//consultando al servicio de oauth2 para obtener el token y luego consultar al servicio 
 	//de listar por id del microservicio productos pasandole el token para poder realizar la consulta
